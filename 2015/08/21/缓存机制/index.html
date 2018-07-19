@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" >
+  <title>缓存机制 | 过去与未来攻城狮</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="大型应用中当用户访问急剧增加，数据库访问频繁，高并发会导致服务器超载，服务器响应变慢。缓存技术可以减轻服务器压力、加快服务器响应。缓存能够避免频繁的数据库访问或者磁盘访问。网站有很多图片的时候应该缓存图片，文章重复读取的时候应该缓存等。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="缓存机制">
+<meta property="og:url" content="http://www.leetidea.com/2015/08/21/缓存机制/index.html">
+<meta property="og:site_name" content="过去与未来攻城狮">
+<meta property="og:description" content="大型应用中当用户访问急剧增加，数据库访问频繁，高并发会导致服务器超载，服务器响应变慢。缓存技术可以减轻服务器压力、加快服务器响应。缓存能够避免频繁的数据库访问或者磁盘访问。网站有很多图片的时候应该缓存图片，文章重复读取的时候应该缓存等。">
+<meta property="og:updated_time" content="2015-08-26T05:19:06.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="缓存机制">
+<meta name="twitter:description" content="大型应用中当用户访问急剧增加，数据库访问频繁，高并发会导致服务器超载，服务器响应变慢。缓存技术可以减轻服务器压力、加快服务器响应。缓存能够避免频繁的数据库访问或者磁盘访问。网站有很多图片的时候应该缓存图片，文章重复读取的时候应该缓存等。">
+  
+    <link rel="alternative" href="/atom.xml" title="过去与未来攻城狮" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  <link rel="stylesheet" href="/css/style.css" type="text/css">
+</head>
+
+<body>
+  <div id="container">
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+	<header id="header" class="inner">
+		<a href="/" class="profilepic">
+			
+			<img lazy-src="/img/head.jpeg" class="js-avatar">
+			
+		</a>
+
+		<hgroup>
+		  <h1 class="header-author"><a href="/">kamallee</a></h1>
+		</hgroup>
+
+		
+		<p class="header-subtitle">做一件事并把它做好</p>
+		
+
+		
+			<div class="switch-btn">
+				<div class="icon">
+					<div class="icon-ctn">
+						<div class="icon-wrap icon-house" data-idx="0">
+							<div class="birdhouse"></div>
+							<div class="birdhouse_holes"></div>
+						</div>
+						<div class="icon-wrap icon-ribbon hide" data-idx="1">
+							<div class="ribbon"></div>
+						</div>
+						
+						<div class="icon-wrap icon-link hide" data-idx="2">
+							<div class="loopback_l"></div>
+							<div class="loopback_r"></div>
+						</div>
+						
+						
+						<div class="icon-wrap icon-me hide" data-idx="3">
+							<div class="user"></div>
+							<div class="shoulder"></div>
+						</div>
+						
+					</div>
+					
+				</div>
+				<div class="tips-box hide">
+					<div class="tips-arrow"></div>
+					<ul class="tips-inner">
+						<li>菜单</li>
+						<li>標籤</li>
+						
+						<li>友情链接</li>
+						
+						
+						<li>關於</li>
+						
+					</ul>
+				</div>
+			</div>
+		
+
+		<div class="switch-area">
+			<div class="switch-wrap">
+				<section class="switch-part switch-part1">
+					<nav class="header-menu">
+						<ul>
+						
+							<li><a href="/">主页</a></li>
+				        
+							<li><a href="/archives">所有文章</a></li>
+				        
+						</ul>
+					</nav>
+					<nav class="header-nav">
+						<div class="social">
+							
+								<a class="github" target="_blank" href="/#" title="github">github</a>
+					        
+								<a class="weibo" target="_blank" href="/#" title="weibo">weibo</a>
+					        
+								<a class="rss" target="_blank" href="/#" title="rss">rss</a>
+					        
+								<a class="zhihu" target="_blank" href="/#" title="zhihu">zhihu</a>
+					        
+						</div>
+					</nav>
+				</section>
+				
+				
+				<section class="switch-part switch-part2">
+					<div class="widget tagcloud" id="js-tagcloud">
+						<a href="/tags/Annotation-Spring/" style="font-size: 10px;">Annotation Spring</a> <a href="/tags/C-C/" style="font-size: 10px;">C/C++</a> <a href="/tags/NIO-Reactor/" style="font-size: 10px;">NIO Reactor</a> <a href="/tags/ReentrantLock-Synchronized-锁/" style="font-size: 10px;">ReentrantLock Synchronized 锁</a> <a href="/tags/cache/" style="font-size: 10px;">cache</a> <a href="/tags/git/" style="font-size: 15px;">git</a> <a href="/tags/instruction/" style="font-size: 10px;">instruction</a> <a href="/tags/java/" style="font-size: 20px;">java</a> <a href="/tags/java-exception/" style="font-size: 10px;">java exception</a> <a href="/tags/java-反射/" style="font-size: 10px;">java 反射</a> <a href="/tags/java-泛型/" style="font-size: 10px;">java 泛型</a> <a href="/tags/java-线程池/" style="font-size: 10px;">java 线程池</a> <a href="/tags/junit/" style="font-size: 10px;">junit</a> <a href="/tags/kafka/" style="font-size: 10px;">kafka</a> <a href="/tags/mybatis/" style="font-size: 10px;">mybatis</a> <a href="/tags/serialization/" style="font-size: 10px;">serialization</a> <a href="/tags/spring/" style="font-size: 10px;">spring</a> <a href="/tags/spring-异步-TaskExecutor/" style="font-size: 10px;">spring 异步 TaskExecutor</a> <a href="/tags/springmvc-restlet/" style="font-size: 10px;">springmvc restlet</a> <a href="/tags/thrift/" style="font-size: 10px;">thrift</a> <a href="/tags/tomcat/" style="font-size: 10px;">tomcat</a> <a href="/tags/对象-java/" style="font-size: 10px;">对象 java</a> <a href="/tags/并发-CyclicBarrier-Semaphore/" style="font-size: 10px;">并发 CyclicBarrier Semaphore</a> <a href="/tags/设计模式/" style="font-size: 20px;">设计模式</a> <a href="/tags/锁-事务-mysql-数据库/" style="font-size: 10px;">锁 事务 mysql 数据库</a>
+					</div>
+				</section>
+				
+				
+				
+				<section class="switch-part switch-part3">
+					<div id="js-friends">
+					
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="http://localhost:4000/">奥巴马的博客</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="http://localhost:4000/">卡卡的美丽传说</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="http://localhost:4000/">本泽马的博客</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="http://localhost:4000/">吉格斯的博客</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="http://localhost:4000/">习大大大不同</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="http://localhost:4000/">托蒂的博客</a>
+			        
+			        </div>
+				</section>
+				
+
+				
+				
+				<section class="switch-part switch-part4">
+				
+					<div id="js-aboutme">我是谁，我从哪里来，我到哪里去？我就是我，是颜色不一样的吃货…</div>
+				</section>
+				
+			</div>
+		</div>
+	</header>				
+</div>
+
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+  	<div class="overlay">
+  		<div class="slider-trigger"></div>
+  		<h1 class="header-author js-mobile-header hide">kamallee</h1>
+  	</div>
+	<div class="intrude-less">
+		<header id="header" class="inner">
+			<div class="profilepic">
+			
+				<img lazy-src="/img/head.jpeg" class="js-avatar">
+			
+			</div>
+			<hgroup>
+			  <h1 class="header-author">kamallee</h1>
+			</hgroup>
+			
+			<p class="header-subtitle">做一件事并把它做好</p>
+			
+			<nav class="header-menu">
+				<ul>
+				
+					<li><a href="/">主页</a></li>
+		        
+					<li><a href="/archives">所有文章</a></li>
+		        
+		        <div class="clearfix"></div>
+				</ul>
+			</nav>
+			<nav class="header-nav">
+				<div class="social">
+					
+						<a class="github" target="_blank" href="/#" title="github">github</a>
+			        
+						<a class="weibo" target="_blank" href="/#" title="weibo">weibo</a>
+			        
+						<a class="rss" target="_blank" href="/#" title="rss">rss</a>
+			        
+						<a class="zhihu" target="_blank" href="/#" title="zhihu">zhihu</a>
+			        
+				</div>
+			</nav>
+		</header>				
+	</div>
+</nav>
+
+      <div class="body-wrap"><article id="post-缓存机制" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2015/08/21/缓存机制/" class="article-date">
+  	<time datetime="2015-08-21T02:13:56.000Z" itemprop="datePublished">2015-08-21</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      缓存机制
+    </h1>
+  
+
+      </header>
+      
+      <div class="article-info article-info-post">
+        
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/cache/">cache</a></li></ul>
+	</div>
+
+        
+	<div class="article-category tagcloud">
+	<a class="article-category-link" href="/categories/cache/">cache</a>
+	</div>
+
+
+        <div class="clearfix"></div>
+      </div>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>   大型应用中当用户访问急剧增加，数据库访问频繁，高并发会导致服务器超载，服务器响应变慢。缓存技术可以减轻服务器压力、加快服务器响应。缓存能够避免频繁的数据库访问或者磁盘访问。网站有很多图片的时候应该缓存图片，文章重复读取的时候应该缓存等。<br><a id="more"></a></p>
+<p></p><h2>缓存应用场景</h2><br>    1.存储频繁访问的数据<br>    2.存储耗时的计算结果<br>    3.内存缓存减少磁盘io<p></p>
+<p></p><h2>缓存类型</h2><p></p>
+<p></p><h3>1.数据库端缓存</h3><br>    比如增加数据库统计表，避免使用select count(*) 访问操作。<p></p>
+<p></p><h3>2.应用层缓存</h3><br>    缓存数据库的查询结果,减少数据的压力。这个在大型网站是必须做的。<br>    缓存磁盘文件的数据。比如常用的数据可以放到内存，不用每次都去读取磁盘，特别是密集计算的程序，比如中文分词的词库。<br>    缓存某个耗时的计算操作，比如数据统计。<br>应用层缓存的架构也可以分几种：<br>    嵌入式，也就是缓存和应用在同一个机器或者服务。比如单机的文件缓存，java中用hashMap来缓存数据等等。这种缓存速度快，没有网络消耗。<br>    分布式缓存，把缓存的数据独立到不同的机器，通过网络来请求数据，比如常用的memcache就是这一类。<br>分布式缓存一般可以分为几种:<br>    按应用切分数据到不同的缓存服务器或者服务，这是一种比较简单和实用的方式。<br>    按照某种规则（hash,路由等等）把数据存储到不同的缓存服务器<br>    代理模式，应用在获取数据的时候都由代理透明的处理，缓存机制有代理服务器来处理<br>页面片段缓存<br>    针对动态页面里相对静态的部分进行缓存<br>    数据缓存<br>    在进行页面片段缓存后，系统的压力确实进一步降低了，但同样，随着访问量的增加，系统还是开始变慢，经过查找，可能会发现系 统中存在一些重复获取数据信息的地方，像获取用户信息等，这个时候开始考虑是不是可以将这些数据信息也缓存起来呢，于是将这些数据缓存到本地内存，进行数据缓存。<br>2.1 应用层缓存分类<br>（1）对数据分类目的：<br>    满足高并发要求；<br>    使缓存的内容更加广泛。<br>（2）按照数据更新频率划分，可分为如下三类：<br>    a、高频率使用但不频繁更新的业务数据：由于不频繁更新，所以可以在系统启动时，从数据库中加载，放入redis。如果更新，需重启服务，当然这比较笨。更好的做法是在系统启动的同时，启动一个监听通道（如利用redis的pub/sub功能）。当数据发生更新时，往通道publish一个消息，系统接收到消息后，重新从数据库中加载数据，放入缓存。这样系统实现了无中断的更新缓存。<br>    b、高频率使用更新还算频繁的业务数据：由于有一定频率的更新，所以可以在用户访问时，查询缓存，如果没有值，则从数据库中加载入redis，并设置过期时间。这样，过期时间内的访问就都走缓存了。这种策略也有问题，就是大并发访问时，容易造成数据库瞬间高并发读，如果程序再写的烂点，查询语句再复杂点，那可能造成数据库死锁。更好的做法是单独启动一个定时任务，把定时任务看做是一个用户，他每隔一段时间从数据库中读取数据，然后放入缓存。而前台用户访问的始终是缓存数据，不会触发数据库的相关操作。这个策略也可以用在场景一中。<br>    c、高频率使用高频率更新的业务数据：这种数据就需要在写入数据库的同时放入缓存，不设置过期时间，这样用户每次访问都走缓存。为了保证数据的一致，还有数据对内存的占用，还需要有一些额外的策略。<br>2.2、数据一致行问题考虑：<br>按照数据更新频率划分，可以在一定程度上保证数据的一致性，但是不满足对数据有高一致性的要求。<br>    具体取决于你的系统在延迟性、吞吐量和一致性等方面的取舍，这里也是适用CAP定理的。如果你要求高一致性和低延迟性，类似关系数据库一样的要求，那么建议你使用terracotta之类的数据网格缓存，还有Oracle的Coherence，它们都在内存上加了一致性锁之类机制；如果你要求有很大吞吐量，应付互联网庞大用户蜂拥而进的数据，那么采取NoSQL或memcache、redis之类解决方案。<p></p>
+<p></p><h3>3.前端缓存</h3><br>    我们这里说的前端缓存可以理解为一般使用的cdn技术，利用squid，nginx等做前端缓冲技术，主要还是针对静态文件类型，比如图片，css,js,html等静态文件。<br>代理服务器缓存<br>    代理服务器是浏览器和源服务器之间的中间服务器，浏览器先向这个中间服务器发起Web请求，经过处理后（比如权限验证，缓存匹配等），再将请求转发到源服务器。代理服务器缓存的运作原理跟浏览器的运作原理差不多，只是规模更大。可以把它理解为一个共享缓存，不只为一个用户服务，一般为大量用户提供服务，因此在减少相应时间和带宽使用方面很有效，同一个副本会被重用多次。常见代理服务器缓存解决方案有Squid等，这里不再详述。<br> CDN缓存<br>    CDN（Content delivery networks）缓存，也叫网关缓存、反向代理缓存。CDN缓存一般是由网站管理员自己部署，为了让他们的网站更容易扩展并获得更好的性能。浏览器先向CDN网关发起Web请求，网关服务器后面对应着一台或多台负载均衡源服务器，会根据它们的负载请求，动态将请求转发到合适的源服务器上。虽然这种架构负载均衡源服务器之间的缓存没法共享，但却拥有更好的处扩展性。从浏览器角度来看，整个CDN就是一个源服务器，从这个层面来说，本文讨论浏览器和服务器之间的缓存机制，在这种架构下同样适用。<p></p>
+<p></p><h3>4.客户端缓存</h3><br>    浏览器端的缓存，可以让用户请求一次之后，下一次不在从服务器端请求数据，直接从本地缓存读取，可以减轻服务器负担也可以加快用户的访问速度。<p></p>
+<p></p><h2>缓存的过期和更新</h2><br>缓存的过期包含<br>    时间过期<br>    我们在缓存数据的时候我们可以指定数据缓存的最大时间，如果超过这个时间，我们就认为缓存是失效的。<br>    基于规则的过期<br>    我们在缓存中存储了某些数据来标明数据的版本。比如存取的时间，更新的时间，数据的版本信息等等。然后比较这些信息是否有变化来判断是否过期。<br>缓存的更新包含<br>    被动<br>    当缓存失效的时候我们的应用程序重新从主存储器中取数据，然后重新放回缓存中。<br>    主动<br>    当数据一更新的时候，我们的应用主动的去更新我们的缓存内容。<br>    被动和主动结合（基于版本）<br>    当数据一更新的时候，我们更新一个数据被更新的标志。然后根据上面讲到的“基于规则的过期”来更新数据。<p></p>
+<p></p><h2>缓存系统评价</h2><br>   缓存系统评价从下面三个方面进行综合考虑：<br>   （1）速度<br>   （2）及时性<br>   （3）命中率<p></p>
+
+      
+    </div>
+    
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2015/08/24/java异常/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption"><</strong>
+      <div class="article-nav-title">
+        
+          java异常
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2015/08/20/java回调/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">java回调</div>
+      <strong class="article-nav-caption">></strong>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+<div class="share_jia">
+	<!-- JiaThis Button BEGIN -->
+	<div class="jiathis_style">
+		<span class="jiathis_txt">分享到: &nbsp; </span>
+		<a class="jiathis_button_facebook"></a> 
+    <a class="jiathis_button_twitter"></a>
+    <a class="jiathis_button_plus"></a> 
+    <a class="jiathis_button_tsina"></a>
+		<a class="jiathis_button_cqq"></a>
+		<a class="jiathis_button_douban"></a>
+		<a class="jiathis_button_weixin"></a>
+		<a class="jiathis_button_tumblr"></a>
+    <a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jtico jtico_jiathis" target="_blank"></a>
+	</div>
+	<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js?uid=1405949716054953" charset="utf-8"></script>
+	<!-- JiaThis Button END -->
+</div>
+
+
+
+
+
+
+<div class="duoshuo">
+	<!-- 多说评论框 start -->
+	<div class="ds-thread" data-thread-key="缓存机制" data-title="缓存机制" data-url="http://www.leetidea.com/2015/08/21/缓存机制/"></div>
+	<!-- 多说评论框 end -->
+	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+	<script type="text/javascript">
+	var duoshuoQuery = {short_name:"bigshark"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+	<!-- 多说公共JS代码 end -->
+</div>
+
+
+
+
+</div>
+      <footer id="footer">
+  <div class="outer">
+    <div id="footer-info">
+    	<div class="footer-left">
+    		&copy; 2016 kamallee
+    	</div>
+      	<div class="footer-right">
+      		<a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/litten/hexo-theme-yilia" target="_blank">Yilia</a> by Litten
+      	</div>
+    </div>
+  </div>
+</footer>
+    </div>
+    
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css" type="text/css">
+
+
+<script>
+	var yiliaConfig = {
+		fancybox: true,
+		mathjax: true,
+		animate: true,
+		isHome: false,
+		isPost: true,
+		isArchive: false,
+		isTag: false,
+		isCategory: false,
+		open_in_new: false
+	}
+</script>
+<script src="http://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js" type="text/javascript"></script>
+<script src="/js/main.js" type="text/javascript"></script>
+
+
+
+
+
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+});
+
+MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';                 
+    }       
+});
+</script>
+
+<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+  </div>
+</body>
+</html>

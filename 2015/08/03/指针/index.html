@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" >
+  <title>指针 | 过去与未来攻城狮</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="指针引用
+要操作内存必须使用指针用new创建的都置于堆中解引用：沿着指针的箭头找到堆（或者其它东西）中的实际值对于指向结构体的指针，可以先对他进行解引用，然后使用点操作符访问字段但是箭头操作符一次做两个工作：既对指针解引用，又完成字段访问使用c++开发项目时先确定使用什么风格的字符串">
+<meta property="og:type" content="article">
+<meta property="og:title" content="指针">
+<meta property="og:url" content="http://www.leetidea.com/2015/08/03/指针/index.html">
+<meta property="og:site_name" content="过去与未来攻城狮">
+<meta property="og:description" content="指针引用
+要操作内存必须使用指针用new创建的都置于堆中解引用：沿着指针的箭头找到堆（或者其它东西）中的实际值对于指向结构体的指针，可以先对他进行解引用，然后使用点操作符访问字段但是箭头操作符一次做两个工作：既对指针解引用，又完成字段访问使用c++开发项目时先确定使用什么风格的字符串">
+<meta property="og:updated_time" content="2015-08-06T07:03:01.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="指针">
+<meta name="twitter:description" content="指针引用
+要操作内存必须使用指针用new创建的都置于堆中解引用：沿着指针的箭头找到堆（或者其它东西）中的实际值对于指向结构体的指针，可以先对他进行解引用，然后使用点操作符访问字段但是箭头操作符一次做两个工作：既对指针解引用，又完成字段访问使用c++开发项目时先确定使用什么风格的字符串">
+  
+    <link rel="alternative" href="/atom.xml" title="过去与未来攻城狮" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  <link rel="stylesheet" href="/css/style.css" type="text/css">
+</head>
+
+<body>
+  <div id="container">
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+	<header id="header" class="inner">
+		<a href="/" class="profilepic">
+			
+			<img lazy-src="/img/head.jpeg" class="js-avatar">
+			
+		</a>
+
+		<hgroup>
+		  <h1 class="header-author"><a href="/">kamallee</a></h1>
+		</hgroup>
+
+		
+		<p class="header-subtitle">做一件事并把它做好</p>
+		
+
+		
+			<div class="switch-btn">
+				<div class="icon">
+					<div class="icon-ctn">
+						<div class="icon-wrap icon-house" data-idx="0">
+							<div class="birdhouse"></div>
+							<div class="birdhouse_holes"></div>
+						</div>
+						<div class="icon-wrap icon-ribbon hide" data-idx="1">
+							<div class="ribbon"></div>
+						</div>
+						
+						<div class="icon-wrap icon-link hide" data-idx="2">
+							<div class="loopback_l"></div>
+							<div class="loopback_r"></div>
+						</div>
+						
+						
+						<div class="icon-wrap icon-me hide" data-idx="3">
+							<div class="user"></div>
+							<div class="shoulder"></div>
+						</div>
+						
+					</div>
+					
+				</div>
+				<div class="tips-box hide">
+					<div class="tips-arrow"></div>
+					<ul class="tips-inner">
+						<li>菜单</li>
+						<li>標籤</li>
+						
+						<li>友情链接</li>
+						
+						
+						<li>關於</li>
+						
+					</ul>
+				</div>
+			</div>
+		
+
+		<div class="switch-area">
+			<div class="switch-wrap">
+				<section class="switch-part switch-part1">
+					<nav class="header-menu">
+						<ul>
+						
+							<li><a href="/">主页</a></li>
+				        
+							<li><a href="/archives">所有文章</a></li>
+				        
+						</ul>
+					</nav>
+					<nav class="header-nav">
+						<div class="social">
+							
+								<a class="github" target="_blank" href="/#" title="github">github</a>
+					        
+								<a class="weibo" target="_blank" href="/#" title="weibo">weibo</a>
+					        
+								<a class="rss" target="_blank" href="/#" title="rss">rss</a>
+					        
+								<a class="zhihu" target="_blank" href="/#" title="zhihu">zhihu</a>
+					        
+						</div>
+					</nav>
+				</section>
+				
+				
+				<section class="switch-part switch-part2">
+					<div class="widget tagcloud" id="js-tagcloud">
+						<a href="/tags/Annotation-Spring/" style="font-size: 10px;">Annotation Spring</a> <a href="/tags/C-C/" style="font-size: 10px;">C/C++</a> <a href="/tags/NIO-Reactor/" style="font-size: 10px;">NIO Reactor</a> <a href="/tags/ReentrantLock-Synchronized-锁/" style="font-size: 10px;">ReentrantLock Synchronized 锁</a> <a href="/tags/cache/" style="font-size: 10px;">cache</a> <a href="/tags/git/" style="font-size: 15px;">git</a> <a href="/tags/instruction/" style="font-size: 10px;">instruction</a> <a href="/tags/java/" style="font-size: 20px;">java</a> <a href="/tags/java-exception/" style="font-size: 10px;">java exception</a> <a href="/tags/java-反射/" style="font-size: 10px;">java 反射</a> <a href="/tags/java-泛型/" style="font-size: 10px;">java 泛型</a> <a href="/tags/java-线程池/" style="font-size: 10px;">java 线程池</a> <a href="/tags/junit/" style="font-size: 10px;">junit</a> <a href="/tags/kafka/" style="font-size: 10px;">kafka</a> <a href="/tags/mybatis/" style="font-size: 10px;">mybatis</a> <a href="/tags/serialization/" style="font-size: 10px;">serialization</a> <a href="/tags/spring/" style="font-size: 10px;">spring</a> <a href="/tags/spring-异步-TaskExecutor/" style="font-size: 10px;">spring 异步 TaskExecutor</a> <a href="/tags/springmvc-restlet/" style="font-size: 10px;">springmvc restlet</a> <a href="/tags/thrift/" style="font-size: 10px;">thrift</a> <a href="/tags/tomcat/" style="font-size: 10px;">tomcat</a> <a href="/tags/对象-java/" style="font-size: 10px;">对象 java</a> <a href="/tags/并发-CyclicBarrier-Semaphore/" style="font-size: 10px;">并发 CyclicBarrier Semaphore</a> <a href="/tags/设计模式/" style="font-size: 20px;">设计模式</a> <a href="/tags/锁-事务-mysql-数据库/" style="font-size: 10px;">锁 事务 mysql 数据库</a>
+					</div>
+				</section>
+				
+				
+				
+				<section class="switch-part switch-part3">
+					<div id="js-friends">
+					
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="http://localhost:4000/">奥巴马的博客</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="http://localhost:4000/">卡卡的美丽传说</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="http://localhost:4000/">本泽马的博客</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="http://localhost:4000/">吉格斯的博客</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="http://localhost:4000/">习大大大不同</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="http://localhost:4000/">托蒂的博客</a>
+			        
+			        </div>
+				</section>
+				
+
+				
+				
+				<section class="switch-part switch-part4">
+				
+					<div id="js-aboutme">我是谁，我从哪里来，我到哪里去？我就是我，是颜色不一样的吃货…</div>
+				</section>
+				
+			</div>
+		</div>
+	</header>				
+</div>
+
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+  	<div class="overlay">
+  		<div class="slider-trigger"></div>
+  		<h1 class="header-author js-mobile-header hide">kamallee</h1>
+  	</div>
+	<div class="intrude-less">
+		<header id="header" class="inner">
+			<div class="profilepic">
+			
+				<img lazy-src="/img/head.jpeg" class="js-avatar">
+			
+			</div>
+			<hgroup>
+			  <h1 class="header-author">kamallee</h1>
+			</hgroup>
+			
+			<p class="header-subtitle">做一件事并把它做好</p>
+			
+			<nav class="header-menu">
+				<ul>
+				
+					<li><a href="/">主页</a></li>
+		        
+					<li><a href="/archives">所有文章</a></li>
+		        
+		        <div class="clearfix"></div>
+				</ul>
+			</nav>
+			<nav class="header-nav">
+				<div class="social">
+					
+						<a class="github" target="_blank" href="/#" title="github">github</a>
+			        
+						<a class="weibo" target="_blank" href="/#" title="weibo">weibo</a>
+			        
+						<a class="rss" target="_blank" href="/#" title="rss">rss</a>
+			        
+						<a class="zhihu" target="_blank" href="/#" title="zhihu">zhihu</a>
+			        
+				</div>
+			</nav>
+		</header>				
+	</div>
+</nav>
+
+      <div class="body-wrap"><article id="post-指针" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2015/08/03/指针/" class="article-date">
+  	<time datetime="2015-08-03T10:45:21.000Z" itemprop="datePublished">2015-08-03</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      指针
+    </h1>
+  
+
+      </header>
+      
+      <div class="article-info article-info-post">
+        
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/C-C/">C/C++</a></li></ul>
+	</div>
+
+        
+	<div class="article-category tagcloud">
+	<a class="article-category-link" href="/categories/C-C/">C/C++</a>
+	</div>
+
+
+        <div class="clearfix"></div>
+      </div>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>指针引用</p>
+<p>要操作内存必须使用指针<br>用new创建的都置于堆中<br>解引用：沿着指针的箭头找到堆（或者其它东西）中的实际值<br>对于指向结构体的指针，可以先对他进行解引用，然后使用点操作符访问字段<br>但是箭头操作符一次做两个工作：既对指针解引用，又完成字段访问<br>使用c++开发项目时先确定使用什么风格的字符串<br><a id="more"></a><br>引用：会把它当成常亮来使用，不过其本质是原变量的指针， 事实上只是被引用的参数的别名，他们的地址<br>是相同的即一个地址有两个名称。</p>
+<p>const:使用他保护变量<br>const引用：看似矛盾，引用允许你修改，而const避免修改。但他的意义在于提高效率，如果传递一个引用<br>，实际上只是传递了原变量的一个指针，这样计算机就无需为之建立副本。const引用两个优势，一来不用<br>建立副本，二来原变量不会被修改。const可以用于指定函数或方法的参数应该保持不变。<br>const int <em>ip;表示不能改变ip指向的值；而int </em>const ip=NULL;表示不能改变ip这个指针本身。</p>
+<p>c++基本设计原则：抽象和重用<br>c是结构式语言</p>
+<p>c++初始化列表：初始化列表会按类定义中数据成员声明的顺序进行初始化，而不是列表中的顺序<br>指针引用：引用指针的引用，不能声明指向引用的指针</p>
+<p>外部链接：对于其他源文件这个名字是可用的；内部链接（也称静态链接）是指对于其他源文件这个名字不<br>可用。函数和全局变量默认都有外部链接。添加关键字static来制定内部链接。<br>static可以创建局部变量，只在进入和退出变量作用域之间维护变量的值，比如函数内部定义的变量只能在<br>函数内部访问。</p>
+<p>程序中的全局变量和static类数据成员都是在main()函数运行之前初始化的。</p>
+<p>C++中的强制类型转换：dynamic_cast：static转换不会完成运行时的类型检查，而这个会<br>reinterpret_cast:不同类型的可能也可以转换，可以转换c++理论上不支持的转换（指针-&gt;int,int-&gt;指针）<br>const_cast：去除变量的常量性<br>static_cast：宣示地完成c++支持的转换</p>
+<p>作用域解析操作符（::）<br>全局作用域：(::name，name是一个全局变量）<br>比如::max(7,i),确认我们调用的是全局名字空间的max(),标准模版库也有一个std::max()模板，在某些情况下<br>也会被调用，因此有时会产生二义性。</p>
+<p>头文件是为子系统或者代码片段提供抽象接口的一种机制<br>超前引用：即在头文件中放入累的声明，在类定义中就可以使用指向这个类的指针或引用</p>
+<p>相对于malloc，new不仅分配空间而且创建对象，使用delete会调用对象的析构函数，free不会<br>数组即指针，指针并非都是数组<br>strlen返回的是字符串的长度（不包括’\0’)</p>
+<p>int calendar[12][31];int (<em>monthp)[31];monthp=calendar;<br>monthp指向数组calendar的第一个元素，也就是数组calendar的12个有着31个元素的数组类型元素之一。<br>int (</em>monthp)[31]称为数组指针（也称指向一位数组的指针，即行指针），即指向指针的指针。<br>int *monthp[31];是一个数组指针，即数组里的元素都是指针。</p>
+<p>n–==0首先保存n，从n中减去1，然后比较保存值与0的大小<br>声明与定义：<br>int a;如果其位置出现在所有函数体之外，那他就被称为外部对象的定义，同时为其分配了空间，并默认初始<br>化为0<br>extern int a;并不是a的定义，说明了a是一个外部变量，并且显式地说明了a的存储空间是在程序的其他地方<br>分配的。<br>只是对外部变量的引用。<br><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">class Super&#10;&#123;&#10;public:&#10; void go()&#123;cout&#60;&#60;&#34;go() called on super&#34;&#60; &#62;&#10; vStack;</span><br></pre></td></tr></table></figure></p>
+<p>然而借助于模板的模板参数，你可以只指定容器的类型：Stack vStack;为了获得这个特性，<br>你必须把第二个参数指定为模板的模板参数，那么声明应该如下:<br>template class CONT = std::deque &gt;,<br>本来定义为：template &gt;,CONT是为了定义一个类，<br>所以只能使用关键字class ,而不能使用typename。只适用于类模板，函数模板不支持模板的模板参数。</p>
+<p>类的函数后面加个const，说明该函数不能修改类的成员变量。</p>
+<p>缺省构造函数初始化局部变量，例如int x=int();我们将获得缺省值0.模板为：T x=T();<br>预编译</p>
+<p>预编译头文件：即使不存在模板，C++头文件也可以变得非常巨大，从而需要很长的编译时间。模板更是增<br>加了编译时间。该机制便是为了解决这一问题。我们可以使用某种方式来组织代码，让多个文件中前面的代<br>码都是相同的，于是我们可以先编译完这N行代码，并把编译在（编译后）这一点的完整状态储存在一个所<br>谓的预编译头文件中。因此，对于程序中剩下文件的编译我们只需要加载上面已经保存的状态，然后从N+1<br>行开始变异就可以了（因为前面N行代码都是相同的）。充分利用预处理头文件的关键之处在于：（尽可能的）<br>确认许多文件开始出的相同代码的最大行数。在实际应用中，这就意味着文件必须以相同的#include指示符开<br>始，因为#include指示符本身耗费了很大一部分的时间。因此，对于被包含的众多头文件，注意它们被包含顺<br>序是相当重要的。</p>
+<p>SFINAE(substitution-failure-is-not-an-error,替换失败并非错误)：这个原则是令函数模板可以重载的重要原<br>因。该原则保护的只是：允许试图创建无效的类型，但并不允许试图计算无效的表达式。</p>
+<p>当使用到模板的时候，.hpp 中需要包含.cpp文件，否则不能将.cpp 和.hpp 分开编译。</p>
+
+      
+    </div>
+    
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2015/08/03/jvm/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption"><</strong>
+      <div class="article-nav-title">
+        
+          jvm
+        
+      </div>
+    </a>
+  
+  
+</nav>
+
+  
+</article>
+
+
+<div class="share_jia">
+	<!-- JiaThis Button BEGIN -->
+	<div class="jiathis_style">
+		<span class="jiathis_txt">分享到: &nbsp; </span>
+		<a class="jiathis_button_facebook"></a> 
+    <a class="jiathis_button_twitter"></a>
+    <a class="jiathis_button_plus"></a> 
+    <a class="jiathis_button_tsina"></a>
+		<a class="jiathis_button_cqq"></a>
+		<a class="jiathis_button_douban"></a>
+		<a class="jiathis_button_weixin"></a>
+		<a class="jiathis_button_tumblr"></a>
+    <a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jtico jtico_jiathis" target="_blank"></a>
+	</div>
+	<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js?uid=1405949716054953" charset="utf-8"></script>
+	<!-- JiaThis Button END -->
+</div>
+
+
+
+
+
+
+<div class="duoshuo">
+	<!-- 多说评论框 start -->
+	<div class="ds-thread" data-thread-key="指针" data-title="指针" data-url="http://www.leetidea.com/2015/08/03/指针/"></div>
+	<!-- 多说评论框 end -->
+	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+	<script type="text/javascript">
+	var duoshuoQuery = {short_name:"bigshark"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+	<!-- 多说公共JS代码 end -->
+</div>
+
+
+
+
+</div>
+      <footer id="footer">
+  <div class="outer">
+    <div id="footer-info">
+    	<div class="footer-left">
+    		&copy; 2016 kamallee
+    	</div>
+      	<div class="footer-right">
+      		<a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/litten/hexo-theme-yilia" target="_blank">Yilia</a> by Litten
+      	</div>
+    </div>
+  </div>
+</footer>
+    </div>
+    
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css" type="text/css">
+
+
+<script>
+	var yiliaConfig = {
+		fancybox: true,
+		mathjax: true,
+		animate: true,
+		isHome: false,
+		isPost: true,
+		isArchive: false,
+		isTag: false,
+		isCategory: false,
+		open_in_new: false
+	}
+</script>
+<script src="http://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js" type="text/javascript"></script>
+<script src="/js/main.js" type="text/javascript"></script>
+
+
+
+
+
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+});
+
+MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';                 
+    }       
+});
+</script>
+
+<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+  </div>
+</body>
+</html>
